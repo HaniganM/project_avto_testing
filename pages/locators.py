@@ -19,4 +19,5 @@ class BacketPageLocators():
     TOTAL_PRICE = (By.CSS_SELECTOR, "div#messages > .alert.alert-safe.alert-noicon.alert-info.fade.in strong")
     BOOK_PRICE = (By.CSS_SELECTOR, "div.col-sm-6.product_main > p.price_color")
 
-
+class ProductPageLocators():
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, '#messages .alert:nth-child(1)')

@@ -2,6 +2,11 @@ import time
 
 from selenium.common.exceptions import NoSuchElementException
 from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ES
+
+
 import math
 class BasePage():
 #  Первым делом добавим конструктор — метод, который вызывается, когда мы создаем объект.
@@ -10,7 +15,7 @@ class BasePage():
     def __init__(self, browser, url, timeout = 10):
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)# добовляем неявное ожидание 10 сек
+        #self.browser.implicitly_wait(timeout)# добовляем неявное ожидание 10 сек
 #  Теперь добавим еще один метод open. Он должен открывать нужную страницу в браузере, используя метод get().
     def open(self):
         self.browser.get(self.url)
@@ -38,6 +43,29 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+
+    #явное ожидание елемента, упадет как только увидет искомый элемент, если не появился, тест будет зеленый
+    def is_not_element_present(self, how, what, timeout = 4):
+        try:
+            WebDriverWait(self.browser, timeout).until(ES.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+        return False
+
+    #явное ожидание , будет ждать до тех пор пока элемент не исчезнет
+
+    def is_disappeared(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException).\
+                until_not(ES.presence_of_element_located((how,what)))
+        except TimeoutException:
+            return False
+        return True
+
+
+
+
 
 
 
