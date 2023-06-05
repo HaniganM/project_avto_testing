@@ -12,4 +12,11 @@ class LoginPageLocators():
     REGISTRATION_PASSWORD = (By.CSS_SELECTOR, '#id_registration-password')
     REGISTRATION_PASSWORD2 = (By.CSS_SELECTOR, 'id_registration-password2')
 
+class BacketPageLocators():
+    ADD_TO_BASKET = (By.CSS_SELECTOR, "button.btn-add-to-basket")
+    ADD_PRODUCT = (By.CSS_SELECTOR, ".alertinner strong")
+    NAME_BOOK = (By.CSS_SELECTOR, ".product_main h1")
+    TOTAL_PRICE = (By.CSS_SELECTOR, "div#messages > .alert.alert-safe.alert-noicon.alert-info.fade.in strong")
+    BOOK_PRICE = (By.CSS_SELECTOR, "div.col-sm-6.product_main > p.price_color")
+
 
