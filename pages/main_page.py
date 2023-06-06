@@ -3,15 +3,16 @@ from .base_page import BasePage
 from .locators import MainPageLocators
 from .locators import BacketPageLocators
 
-#Создаем MainPage. Его нужно сделать наследником класса BasePage. Класс-предок в Python указывается в скобках:
-#таким образом, класс MainPage будет иметь доступ ко всем атрибутам и методам своего класса-предка.
-class MainPage(BasePage):
-    def go_to_login_page(self):
-        login_link = self.browser.find_element(*MainPageLocators.LOGIN_LINK) # * - значит что передали кортеж и его нужно распспаковать
-        login_link.click()
+# Создаем MainPage. Его нужно сделать наследником класса BasePage. Класс-предок в Python указывается в скобках:
+# таким образом, класс MainPage будет иметь доступ ко всем атрибутам и методам своего класса-предка.
+# перенесли методы в базе_пейдж, сюда поставили заглушку
+# Как вы уже знаете, метод __init__ вызывается при создании объекта.
+# Конструктор выше с ключевым словом super на самом деле только вызывает конструктор класса предка и передает ему все те аргументы,
+# которые мы передали в конструктор MainPage.
 
-    def should_be_login_link(self):
-        assert self.is_element_present(*MainPageLocators.LOGIN_LINK), "Login link ist not presenten"
+class MainPage(BasePage):
+    def __init__(self, *args, **kwargs):
+        super(MainPage, self).__init__(*args, **kwargs)
 
 
 
