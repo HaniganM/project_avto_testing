@@ -6,7 +6,7 @@ class BasePageLocators():
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
 
 class MainPageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, '#login_link') # создаем пару , ключ- значение(кортеж)
+    pass
 
 class LoginPageLocators():
     LOGIN_FORM = (By.ID, 'login_form')
@@ -23,6 +23,9 @@ class BacketPageLocators():
     NAME_BOOK = (By.CSS_SELECTOR, ".product_main h1")
     TOTAL_PRICE = (By.CSS_SELECTOR, "div#messages > .alert.alert-safe.alert-noicon.alert-info.fade.in strong")
     BOOK_PRICE = (By.CSS_SELECTOR, "div.col-sm-6.product_main > p.price_color")
+    BASKET_LINK = (By.CSS_SELECTOR, 'span.btn-group .btn.btn-default')
+    BASKET_EMPTY = (By.CSS_SELECTOR, '#content_inner > p')
+    BASKET_NOT_EMPTY = (By.CSS_SELECTOR, 'h2.col-sm-6 h3')
 
 class ProductPageLocators():
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, '#messages .alert:nth-child(1)')

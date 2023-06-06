@@ -1,6 +1,8 @@
 import time
 from pages.product_page import ProductPage
 from pages.login_page import LoginPage
+from pages.main_page import MainPage
+from pages.basket_page import BasketPage
 
 
 def test_guest_can_add_product_to_basket(browser):
@@ -27,6 +29,17 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
     page.go_to_login_page()
     page_login = LoginPage(browser, link)
     page_login.should_be_login_url()
+
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/"
+    page = MainPage(browser, link)
+    page.open()
+    page.go_to_basket_page()
+    page_basket = BasketPage(browser, link)
+    page_basket.should_be_basket_page()
+    page_basket.should_be_what_product_is_not_basket()
+    page_basket.should_be_what_basket_is_empty()
+    time.sleep(3)
 
 
 
